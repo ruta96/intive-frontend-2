@@ -1,19 +1,22 @@
+import moviesStorage from './movies-storage.js';
+import moviesCounterSet from './movies-counter.js';
+
 let watchStatus;
+const moviesCounterAll = document.getElementById("moviesCounterAll");
+const moviesCounterSeen = document.getElementById("moviesCounterSeen");
+const movies = new moviesStorage();
 
-//count seen and all movies
-const countMovies = () => {
-document.getElementById("moviesCounterAll").innerHTML = moviesData.length;
-document.getElementById("moviesCounterSeen").innerHTML = moviesData.filter(elem => elem.seen === "T").length;
-};
-countMovies();
+moviesCounterSet(moviesCounterAll, movies.get().length);
+moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
 
-moviesData.forEach((elem, index) => {
+
+movies.moviesList.forEach((elem, index) => {
     //initial class assigment for seen and not seen movies
     if (elem.seen === "T"){ 
-        watchStatus = "seen"
+        watchStatus = "seen";
     }
     else{ 
-        watchStatus ="not-seen"
+        watchStatus ="not-seen";
     }
     //template of single list element
     const li = document.createElement("li");
@@ -30,16 +33,16 @@ moviesData.forEach((elem, index) => {
 
 //handle onclick
 //change status img and value in table at key seen
-for(let i = 0; i<moviesData.length; i++){
+for(let i = 0; i<movies.moviesList.length; i++){
     document.getElementById(i).addEventListener('click',function () {
         if (this.className === "seen"){
-            moviesData[this.id].seen = "F";
+            movies.moviesList[this.id].seen = "F";
             this.className ="not-seen";
         }
         else {
-            moviesData[this.id].seen = "T";
+            movies.moviesList[this.id].seen = "T";
             this.className = "seen";
         }
-        countMovies();
+    moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
     })
 }
