@@ -1,9 +1,11 @@
 export default class MoviesStorage{
     constructor(){
-        if(localStorage.getItem("movies")) {
+        if (Array.isArray(JSON.parse(localStorage.getItem("movies")))) {
+            console.log("istnieje");
             this.moviesList = JSON.parse(localStorage.getItem("movies"));
         }
         else {
+            console.log("nie istnieje");
             this.moviesList = [
             {
                 "id": 1,
@@ -68,5 +70,13 @@ export default class MoviesStorage{
     get(id){
         if(id) return this.moviesList.find(object => object.id);
         return this.moviesList;
+    }
+    set(data){
+        this.moviesList.push(data);
+        localStorage.setItem("movies",JSON.stringify(this.moviesList)); 
+    }
+    remove(id){
+        this.moviesList = this.moviesList.filter(elem => elem.id !== id);
+        localStorage.setItem("movies",JSON.stringify(this.moviesList)); 
     }
 }
