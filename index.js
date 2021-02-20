@@ -6,11 +6,10 @@ const moviesCounterAll = document.getElementById("moviesCounterAll");
 const moviesCounterSeen = document.getElementById("moviesCounterSeen");
 const movies = new moviesStorage();
 
-
 moviesCounterSet(moviesCounterAll, movies.get().length);
 moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
 
-movies.moviesList.forEach((elem, index) => {
+movies.moviesList.forEach(elem => {
     //initial class assigment for seen and not seen movies
     if (elem.seen === "T"){ 
         watchStatus = "seen";

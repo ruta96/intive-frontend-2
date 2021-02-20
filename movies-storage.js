@@ -1,9 +1,11 @@
 export default class MoviesStorage{
 
     constructor(){
+        //check if key movies exists in local storage if that return true - get data from it
         if (Array.isArray(JSON.parse(localStorage.getItem("movies")))) {
             this.moviesList = JSON.parse(localStorage.getItem("movies"));
         }
+        //if movies dont exists in local storage - create defualt list and store it
         else {
             this.moviesList = [
             {
@@ -68,26 +70,41 @@ export default class MoviesStorage{
     }
 
     get(id){
+        //if function get argument - show element with id specified in arg
         if(id) return this.moviesList.find(object => object.id);
+        //if not show all elements in this object
         return this.moviesList;
     }
 
     set(data, id){
+        //if set has second argument edit existing element with id specified in this argument
         if (id){
             this.moviesList.find(elem => {
                 if(elem.id === id){
+                    //update object element by data send by argument
                     return Object.assign(elem, data);
                     }          
             });
         }
+        //if there is only one arg - add new element to list and store it
         else{
-        this.moviesList.push(data);
+            //incerement id to new element
+            if (this.moviesList.length>0){
+                data.id = this.moviesList[this.moviesList.length-1].id + 1;
+            }
+            else{
+                data.id = 1;
+            }
+            //push element to object
+            this.moviesList.push(data);
         }
         localStorage.setItem("movies",JSON.stringify(this.moviesList)); 
     }
 
+    //remove element with specified id and store changes in local storage
     remove(id){
         this.moviesList = this.moviesList.filter(elem => elem.id !== id);
         localStorage.setItem("movies",JSON.stringify(this.moviesList)); 
     }
+
 }
