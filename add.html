@@ -15,7 +15,47 @@
     <p>All: <span class="moviesCounter" id="anotherMoviesCounterAll"></span></p>
     <p>Viewed: <span class="moviesCounter" id="anotherMoviesCounterSeen"></span></p>
 </div>
-<div id="formContainer"></div>
+<div id="formContainer">
+    <form class="addmovie-form">
+        <span class="addmovie-form-title">
+            Add movie
+        </span>
+
+        <div>
+            <input class="input" type="text" name="title" placeholder="Title">
+            <span class="validator"></span>
+        </div>
+
+        <div>
+            <input class="input" type="text" name="year" placeholder="Year">
+            <span class="validator"></span>
+        </div>
+
+        <div>
+            <input class="input" type="text" name="genre" placeholder="Genre">
+            <span class="validator"></span>
+        </div>
+
+        <div>
+            <textarea class="input" name="summary" placeholder="Summary"></textarea>
+            <span class="validator"></span>
+        </div>
+
+        <div>
+            <label for="seen">Seen: </label>
+            <input class="input" type="checkbox" id="seen" name="seen"></textarea>
+            <span class="validator"></span>
+        </div>
+
+        <div>
+            <button id="addmovie-button">
+                <span>
+                    Add movie
+                </span>
+            </button>
+        </div>
+    </form>
+</div>
 <script type="module" src="add.js"></script>
 </body>
 </html>
