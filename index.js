@@ -6,9 +6,9 @@ const moviesCounterAll = document.getElementById("moviesCounterAll");
 const moviesCounterSeen = document.getElementById("moviesCounterSeen");
 const movies = new moviesStorage();
 
+
 moviesCounterSet(moviesCounterAll, movies.get().length);
 moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
-
 
 movies.moviesList.forEach((elem, index) => {
     //initial class assigment for seen and not seen movies
@@ -23,7 +23,7 @@ movies.moviesList.forEach((elem, index) => {
     li.className = "listElement";
     li.innerHTML = (`
     <h1>${elem.title} (${elem.year})</h1>
-    <div class="${watchStatus}" id="${index}"></div>
+    <div class="${watchStatus}" id="${elem.id}"></div>
     <h2 class="genre">${elem.genre}</h2>
     <hr>
     <p>${elem.summary}</p>
@@ -33,16 +33,16 @@ movies.moviesList.forEach((elem, index) => {
 
 //handle onclick
 //change status img and value in table at key seen
-for(let i = 0; i<movies.moviesList.length; i++){
-    document.getElementById(i).addEventListener('click',function () {
+movies.moviesList.forEach(elem => {
+    document.getElementById(elem.id).addEventListener('click',function () {
         if (this.className === "seen"){
-            movies.moviesList[this.id].seen = "F";
+            movies.set({"seen":"F"},elem.id);
             this.className ="not-seen";
         }
         else {
-            movies.moviesList[this.id].seen = "T";
+            movies.set({"seen":"T"},elem.id);
             this.className = "seen";
         }
     moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
     })
-}
+});
