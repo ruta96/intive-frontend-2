@@ -1,0 +1,42 @@
+.addmovie-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
+  row-gap: 25px;
+}
+.form-element {
+  grid-column: 2;
+}
+
+.addmovie-form-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.input {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 20px;
+  padding: 10px;
+  border: 5px solid #333;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.input::placeholder {
+  opacity: 0.5;
+}
+
+.input-textarea {
+  resize: none;
+  height: 6em;
+}
+
+.input-button {
+  width: auto;
+}
+
+.input-button:hover {
+  background-color: rgba(51, 51, 51, 1);
+}

@@ -7,6 +7,7 @@
     <meta name="description" content="Javascript - zadanie 1" />
     <meta name="robots" content="index, follow" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="add.css">
     <link rel="icon" type="image/png" href="img/favicon.png" />
     <title>Add movie</title>
 </head>
@@ -17,38 +18,33 @@
 </div>
 <div id="formContainer">
     <form class="addmovie-form">
-        <span class="addmovie-form-title">
+        <span class="form-element addmovie-form-title">
             Add movie
         </span>
 
-        <div>
-            <input class="input" type="text" name="title" placeholder="Title">
-            <span class="validator"></span>
+        <div class="form-element">
+            <input class="input" type="text" id="title" name="title" placeholder="Title">
         </div>
 
-        <div>
-            <input class="input" type="text" name="year" placeholder="Year">
-            <span class="validator"></span>
+        <div class="form-element">
+            <input class="input" type="text" id="year" name="year" placeholder="Year">
         </div>
 
-        <div>
-            <input class="input" type="text" name="genre" placeholder="Genre">
-            <span class="validator"></span>
+        <div class="form-element">
+            <input class="input" type="text" id="genre" name="genre" placeholder="Genre">
         </div>
 
-        <div>
-            <textarea class="input" name="summary" placeholder="Summary"></textarea>
-            <span class="validator"></span>
+        <div class="form-element">
+            <textarea class="input input-textarea" id="summary" name="summary" placeholder="Summary"></textarea>
         </div>
 
-        <div>
+        <div class="form-element">
             <label for="seen">Seen: </label>
-            <input class="input" type="checkbox" id="seen" name="seen"></textarea>
-            <span class="validator"></span>
+            <input class="input-checkbox" type="checkbox" id="seen" name="seen"></input>
         </div>
 
-        <div>
-            <button id="addmovie-button">
+        <div class="form-element">
+            <button type="button" class="input input-button" id="addmovie-button">
                 <span>
                     Add movie
                 </span>

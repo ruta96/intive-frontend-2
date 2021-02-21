@@ -61,6 +61,14 @@ body {
   transform: scale(1.1);
 }
 
+.listElement-addmovie {
+  background-image: url("img/plus.png");
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 300px;
+}
+
 .seen,
 .not-seen {
   position: absolute;

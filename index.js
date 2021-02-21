@@ -9,6 +9,14 @@ const movies = new moviesStorage();
 moviesCounterSet(moviesCounterAll, movies.get().length);
 moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
 
+const addmovie = document.createElement("li");
+addmovie.className = "listElement listElement-addmovie";
+addmovie.id ="addmovie";
+document.getElementById("moviesList").appendChild(addmovie);
+
+addmovie.addEventListener("click",function (){location.href="./add.html";})
+
+movies.remove(22);
 movies.moviesList.forEach(elem => {
     //initial class assigment for seen and not seen movies
     if (elem.seen === "T"){ 
