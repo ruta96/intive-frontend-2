@@ -5,8 +5,11 @@ const moviesCounterAll = document.getElementById("anotherMoviesCounterAll");
 const moviesCounterSeen = document.getElementById("anotherMoviesCounterSeen");
 const movies = new moviesStorage();
 
+const setCounters = () =>{
 moviesCounterSet(moviesCounterAll, movies.get().length);
 moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
+};
+setCounters();
 
 const title = document.getElementById('title');
 const year = document.getElementById('year');
@@ -44,9 +47,11 @@ document.getElementById("addmovie-button").addEventListener('click',function () 
         alert("This movie is already added to list");
     }
     else{
+    if(data.summary === ""){
+        data.summary = "No summary.";
+    }
     movies.set(data);
-    moviesCounterSet(moviesCounterAll, movies.get().length);
-    moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
+    setCounters();
     title.value= "";
     year.value= "";
     genre.value= "";
