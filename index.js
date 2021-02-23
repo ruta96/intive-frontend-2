@@ -12,6 +12,7 @@ moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T
 const addmovie = document.createElement("li");
 addmovie.className = "listElement listElement-addmovie";
 addmovie.id ="addmovie";
+addmovie.innerText="ADD MOVIE";
 document.getElementById("moviesList").appendChild(addmovie);
 
 addmovie.addEventListener("click",function (){location.href="./add.html";})

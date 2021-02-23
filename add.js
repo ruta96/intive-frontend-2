@@ -11,19 +11,37 @@ moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T
 };
 setCounters();
 
+
+const validate = (input,text) => {
+    document.getElementById(input).classList.add("validate");
+    document.getElementById("message").innerText = text;
+}
+
+const clear = (input) => {
+document.getElementById(input).classList.remove("validate");
+document.getElementById("message").innerText="";
+};
+
+Array.prototype.forEach.call(document.getElementsByClassName("input-text"), function(el) {
+    document.getElementById(el.id).addEventListener("change", function(){clear(el.id)});
+});
+
 const title = document.getElementById('title');
 const year = document.getElementById('year');
 const genre = document.getElementById('genre');
 const summary = document.getElementById('summary');
 let seen;
 
+//handle onclick for add movie
 document.getElementById("addmovie-button").addEventListener('click',function () {
+
     if(document.getElementById('seen').checked === true){
         seen = "T";
     }
     else{
         seen = "F";
     }
+
     const data = {
         "title" : title.value,
         "year" : year.value,
@@ -31,30 +49,33 @@ document.getElementById("addmovie-button").addEventListener('click',function () 
         "summary" : summary.value,
         "seen" : seen
     }
+
     if(title.value === ""){
-        alert("Title must be filled out");
+        validate("title","Title must be filled out");
+        return false;
     }
-    else if(year.value === ""){
-        alert("Year must be filled out");
+    if(year.value === ""){
+        validate("year","Year must be filled out");
+        return false;
     }
-    else if(genre.value === ""){
-        alert("Genre must be filled out");
+    if(genre.value === ""){
+        validate("genre","Genre must be filled out");
+        return false;
     }
-    else if(!/^[1-9][0-9][0-9][0-9]$/.test(year.value)){
-        alert("Year must be four digits long")
+    if(!/^[1-9][0-9][0-9][0-9]$/.test(year.value)){
+        validate("year","Year must be four digits long");
+        return false;
     }
-    else if(movies.moviesList.find( elem => elem.title == title.value)){
-        alert("This movie is already added to list");
+    if(movies.moviesList.find( elem => elem.title === title.value)){
+        validate("title","This movie is already added to list");
+        return false;
     }
-    else{
     if(data.summary === ""){
         data.summary = "No summary.";
     }
+
     movies.set(data);
     setCounters();
-    title.value= "";
-    year.value= "";
-    genre.value= "";
-    summary.value= "";
-    }
+    document.getElementById('addmovie-form').reset();
 });
+document.getElementById("return-button").addEventListener('click',function () { location.href="./"});

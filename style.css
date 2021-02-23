@@ -1,3 +1,18 @@
+@font-face {
+  font-family: futuraMedium;
+  src: url(font/futura\ medium\ bt.ttf);
+}
+
+@font-face {
+  font-family: futuraBold;
+  src: url(font/Futura\ XBlk\ BT.ttf);
+}
+
+@font-face {
+  font-family: futuraLight;
+  src: url(font/futura\ light\ bt.ttf);
+}
+
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -10,10 +25,19 @@ body {
 }
 
 #moviesCountersContainer {
+  position: sticky;
+  z-index: 2;
+  top: 10px;
+  left: 95%;
   margin-bottom: 100px;
-  padding-right: 50px;
+  padding: 5px 20px;
+  width: 160px;
+  border-radius: 20px;
+  font-size: 20px;
   text-align: right;
-  font-size: 30px;
+  background-color: rgb(31, 31, 31);
+  border: 5px solid #333;
+  font-family: futuraMedium;
 }
 
 #moviesCountersContainer p span {
@@ -52,6 +76,7 @@ body {
   -webkit-transition: 0.3s ease-in-out;
   -o-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
+  overflow-wrap: break-word;
 }
 
 .listElement:hover {
@@ -67,6 +92,10 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   min-height: 300px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  font-family: futuraBold;
 }
 
 .seen,
@@ -90,16 +119,19 @@ body {
 
 .listElement h1 {
   padding-right: 35px;
+  font-family: futuraBold;
 }
 
 .genre {
   color: rgb(170, 170, 170);
+  font-family: futuraMedium;
 }
 
 .listElement p {
   font-size: 20px;
   color: rgb(204, 204, 204);
   font-weight: normal;
+  font-family: futuraLight;
 }
 
 /*switch classes*/

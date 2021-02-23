@@ -17,36 +17,49 @@
     <p>Viewed: <span class="moviesCounter" id="anotherMoviesCounterSeen"></span></p>
 </div>
 <div id="formContainer">
-    <form class="addmovie-form" autocomplete="off">
+    <form class="addmovie-form" id="addmovie-form" autocomplete="off">
         <span class="form-element addmovie-form-title">
-            Add movie
+            ADD MOVIE
         </span>
 
         <div class="form-element">
-            <input class="input" type="text" id="title" name="title" placeholder="Title">
+            <input class="input input-text" type="text" id="title"  required>
+            <label class="input-label">Title</label>
         </div>
 
         <div class="form-element">
-            <input class="input" type="text" id="year" name="year" placeholder="Year">
+            <input class="input input-text" type="text" id="year"  required>
+            <label class="input-label">Year</label>
         </div>
 
         <div class="form-element">
-            <input class="input" type="text" id="genre" name="genre" placeholder="Genre">
+            <input class="input input-text" type="text" id="genre"  required>
+            <label class="input-label">Genre</label>
         </div>
 
         <div class="form-element">
-            <textarea class="input input-textarea" id="summary" name="summary" placeholder="Summary"></textarea>
+            <textarea class="input input-textarea" id="summary"  required></textarea>
+            <label class="input-label">Summary</label>
         </div>
 
         <div class="form-element slider">
-            <input type="checkbox" class="input-checkbox" id="seen" name="seen"></input>
-            <label for="seen"></label>
+            <input type="checkbox" class="input-checkbox" id="seen"></input>
+            <label for="seen" id="seen-label"></label>
         </div>
 
+        <span id="message"></span>
         <div class="form-element">
             <button type="button" value="none" class="input input-button" id="addmovie-button">
                 <span>
                     Add movie
+                </span>
+            </button>
+        </div>
+
+        <div class="form-element">
+            <button type="button" value="none" class="input input-button " id="return-button">
+                <span>
+                    Return to list
                 </span>
             </button>
         </div>
