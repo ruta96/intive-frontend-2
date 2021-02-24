@@ -29,8 +29,9 @@ movies.moviesList.forEach(elem => {
     const li = document.createElement("li");
     li.className = "listElement";
     li.innerHTML = (`
+    <div class="close" id="rm-${elem.id}">X</div>
     <h1>${elem.title} (${elem.year})</h1>
-    <div class="${watchStatus}" id="${elem.id}"></div>
+    <div class="${watchStatus}" id="seen-${elem.id}"></div>
     <h2 class="genre">${elem.genre}</h2>
     <hr>
     <p>${elem.summary}</p>
@@ -41,7 +42,7 @@ movies.moviesList.forEach(elem => {
 //handle onclick
 //change status img and value in table at key seen
 movies.moviesList.forEach(elem => {
-    document.getElementById(elem.id).addEventListener('click',function () {
+    document.getElementById("seen-"+elem.id).addEventListener('click',function () {
         if (this.className === "seen"){
             movies.set({"seen":"F"},elem.id);
             this.className ="not-seen";
@@ -51,5 +52,14 @@ movies.moviesList.forEach(elem => {
             this.className = "seen";
         }
     moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
+    })
+});
+
+//handle onclick
+//remove element from list
+movies.moviesList.forEach(elem => {
+    document.getElementById("rm-"+elem.id).addEventListener('click',function () {
+    movies.remove(elem.id);
+    location.reload();
     })
 });

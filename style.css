@@ -98,11 +98,24 @@ body {
   font-family: futuraBold;
 }
 
+.close {
+  position: absolute;
+  right: 20px;
+  font-size: 20px;
+  font-family: futuraBold;
+  user-select: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-shadow: black 3px 3px;
+  text-align: center;
+}
+
 .seen,
 .not-seen {
   position: absolute;
   margin-left: 10px;
-  top: 38px;
+  top: 60px;
   right: 20px;
   height: 30px;
   width: 50px;
