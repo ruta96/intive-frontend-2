@@ -118,7 +118,8 @@ body {
 }
 
 .listElement h1 {
-  padding-right: 35px;
+  padding-right: 28px;
+  font-size: 28px;
   font-family: futuraBold;
 }
 

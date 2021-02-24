@@ -6,25 +6,29 @@ const moviesCounterSeen = document.getElementById("anotherMoviesCounterSeen");
 const movies = new moviesStorage();
 
 const setCounters = () =>{
-moviesCounterSet(moviesCounterAll, movies.get().length);
-moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
+    moviesCounterSet(moviesCounterAll, movies.get().length);
+    moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
 };
-setCounters();
 
+setCounters();
 
 const validate = (input,text) => {
     document.getElementById(input).classList.add("validate");
     document.getElementById("message").innerText = text;
-}
-
-const clear = (input) => {
-document.getElementById(input).classList.remove("validate");
-document.getElementById("message").innerText="";
 };
 
+const clear = (input) => {
+    document.getElementById(input).classList.remove("validate");
+    document.getElementById("message").innerText="";
+};
+
+//clear error message after changing
 Array.prototype.forEach.call(document.getElementsByClassName("input-text"), function(el) {
-    document.getElementById(el.id).addEventListener("change", function(){clear(el.id)});
+    document.getElementById(el.id).addEventListener("change", function(){
+        clear(el.id)
+    });
 });
+
 
 const title = document.getElementById('title');
 const year = document.getElementById('year');
@@ -48,7 +52,7 @@ document.getElementById("addmovie-button").addEventListener('click',function () 
         "genre" : genre.value,
         "summary" : summary.value,
         "seen" : seen
-    }
+    };
 
     if(title.value === ""){
         validate("title","Title must be filled out");

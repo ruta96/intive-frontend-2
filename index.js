@@ -17,7 +17,6 @@ document.getElementById("moviesList").appendChild(addmovie);
 
 addmovie.addEventListener("click",function (){location.href="./add.html";})
 
-movies.remove(22);
 movies.moviesList.forEach(elem => {
     //initial class assigment for seen and not seen movies
     if (elem.seen === "T"){ 

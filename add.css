@@ -203,11 +203,6 @@
   box-shadow: rgba(31, 31, 31, 0.5) 3px 3px;
 }
 
-.slider label:focus {
-  outline: none;
-  border: 5px solid white;
-}
-
 .slider input[type="checkbox"]:checked + label {
   left: 80px;
   width: 100px;

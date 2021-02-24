@@ -7,6 +7,7 @@ export default class MoviesStorage{
         }
         //if movies dont exists in local storage - create defualt list and store it
         else {
+            console.log("pushing default list to local storage...");
             this.moviesList = [
             {
                 "id": 1,
@@ -72,7 +73,7 @@ export default class MoviesStorage{
     get(id){
         //if function get argument - show element with id specified in arg
         if(id) return this.moviesList.find(object => object.id);
-        //if not show all elements in this object
+        //if no arg - show all elements in this object
         return this.moviesList;
     }
 
@@ -88,17 +89,13 @@ export default class MoviesStorage{
         }
         //if there is only one arg - add new element to list and store it
         else{
-            //incerement id to new element
-            if (this.moviesList.length>0){
-                data.id = this.moviesList[this.moviesList.length-1].id + 1;
-            }
-            else{
-                data.id = 1;
-            }
+            //add id key to data
+            data.id = MoviesStorage.idGenerator(this.moviesList); 
             //push element to object
             this.moviesList.push(data);
         }
-        localStorage.setItem("movies",JSON.stringify(this.moviesList)); 
+        localStorage.setItem("movies",JSON.stringify(this.moviesList));
+        console.log(`movie with id: ${data.id} added`);
     }
 
     //remove element with specified id and store changes in local storage
@@ -107,4 +104,15 @@ export default class MoviesStorage{
         localStorage.setItem("movies",JSON.stringify(this.moviesList)); 
     }
 
+    //create id for new element
+    static idGenerator(obj){
+        let id;
+        if (obj.length>0){
+            id = obj[obj.length-1].id + 1;
+        }
+        else{
+            id = 1;
+        }
+        return id;
+    }
 }
