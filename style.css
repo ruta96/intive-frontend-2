@@ -25,6 +25,7 @@ body {
 }
 
 #moviesCountersContainer {
+  position: -webkit-sticky;
   position: sticky;
   z-index: 2;
   top: 10px;
@@ -103,6 +104,9 @@ body {
   right: 20px;
   font-size: 20px;
   font-family: futuraBold;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   cursor: pointer;
   width: 30px;

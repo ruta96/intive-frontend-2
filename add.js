@@ -9,7 +9,6 @@ const setCounters = () =>{
     moviesCounterSet(moviesCounterAll, movies.get().length);
     moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
 };
-
 setCounters();
 
 const validate = (input,text) => {

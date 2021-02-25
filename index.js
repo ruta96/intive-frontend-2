@@ -6,8 +6,11 @@ const moviesCounterAll = document.getElementById("moviesCounterAll");
 const moviesCounterSeen = document.getElementById("moviesCounterSeen");
 const movies = new moviesStorage();
 
-moviesCounterSet(moviesCounterAll, movies.get().length);
-moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
+const setCounters = () =>{
+    moviesCounterSet(moviesCounterAll, movies.get().length);
+    moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
+};
+setCounters();
 
 const addmovie = document.createElement("li");
 addmovie.className = "listElement listElement-addmovie";
@@ -51,7 +54,7 @@ movies.moviesList.forEach(elem => {
             movies.set({"seen":"T"},elem.id);
             this.className = "seen";
         }
-    moviesCounterSet(moviesCounterSeen, movies.get().filter(elem => elem.seen === "T").length);
+    setCounters();
     })
 });
 
